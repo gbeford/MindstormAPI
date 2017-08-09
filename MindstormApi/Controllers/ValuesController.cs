@@ -3,23 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MindstormApi.Models;
 
 namespace MindstormApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly MindstormDbContext ctx;
+
+        public ValuesController(MindstormDbContext context)
+        {
+            ctx = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Team> Get()
         {
-            return new string[] { "value1", "value2" };
+            //var teams = ctx.Teams.Where(t => t.TeamName.Contains("Shrewsbury")).OrderBy(t => t.TeamNumber).ToList();
+            var teams = ctx.Teams;
+            return teams.ToList();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            var team = ctx.Teams.Find(id);
             return "value";
         }
 
