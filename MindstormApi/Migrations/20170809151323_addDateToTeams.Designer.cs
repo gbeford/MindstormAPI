@@ -8,9 +8,10 @@ using MindstormApi.Models;
 namespace MindstormApi.Migrations
 {
     [DbContext(typeof(MindstormDbContext))]
-    partial class MindstormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170809151323_addDateToTeams")]
+    partial class addDateToTeams
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -41,21 +42,11 @@ namespace MindstormApi.Migrations
                     b.Property<int>("TeamId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AltCoachEmail");
-
-                    b.Property<string>("AltCoachFirstName");
-
-                    b.Property<string>("AltCoachlastName");
-
                     b.Property<string>("City");
 
+                    b.Property<string>("Coach");
+
                     b.Property<string>("CoachEmail");
-
-                    b.Property<string>("CoachFirstName");
-
-                    b.Property<string>("CoachLastName");
-
-                    b.Property<string>("CompetitionID");
 
                     b.Property<DateTime>("Created");
 

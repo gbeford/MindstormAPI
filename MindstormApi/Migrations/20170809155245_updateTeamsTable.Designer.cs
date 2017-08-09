@@ -8,9 +8,10 @@ using MindstormApi.Models;
 namespace MindstormApi.Migrations
 {
     [DbContext(typeof(MindstormDbContext))]
-    partial class MindstormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170809155245_updateTeamsTable")]
+    partial class updateTeamsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

@@ -8,11 +8,11 @@ using MindstormApi.Models;
 namespace MindstormApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TeamsController : Controller
     {
         private readonly MindstormDbContext ctx;
 
-        public ValuesController(MindstormDbContext context)
+        public TeamsController(MindstormDbContext context)
         {
             ctx = context;
         }
@@ -36,14 +36,27 @@ namespace MindstormApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public Team Post([FromBody]Team value)
         {
+            ctx.Teams.Add(value);
+            ctx.SaveChanges();
+            return value;
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Team value)
         {
+            var oldTeam = ctx.Teams.Find(id);
+            if (oldTeam != null)
+            {
+                oldTeam.TeamName = value.TeamName;
+                oldTeam.TeamNumber = value.TeamNumber;
+                oldTeam.CoachFirstName = value.CoachFirstName;
+
+                ctx.Update(oldTeam);
+                ctx.SaveChanges();
+            }
         }
 
         // DELETE api/values/5

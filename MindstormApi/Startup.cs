@@ -30,6 +30,7 @@ namespace MindstormApi
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddCors();
             services.AddMvc();
 
             var connection = @"Server=(localdb)\mssqllocaldb;Database=MindstormDb;Trusted_Connection=True;";
@@ -42,6 +43,7 @@ namespace MindstormApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors(b=> b.AllowAnyOrigin().AllowAnyMethod());
             app.UseMvc();
         }
     }
