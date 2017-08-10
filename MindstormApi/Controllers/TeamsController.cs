@@ -38,6 +38,7 @@ namespace MindstormApi.Controllers
         [HttpPost]
         public Team Post([FromBody]Team value)
         {
+            value.Created = DateTime.Now;
             ctx.Teams.Add(value);
             ctx.SaveChanges();
             return value;
@@ -54,6 +55,7 @@ namespace MindstormApi.Controllers
                 oldTeam.TeamNumber = value.TeamNumber;
                 oldTeam.CoachFirstName = value.CoachFirstName;
 
+                oldTeam.Updated = DateTime.Now;
                 ctx.Update(oldTeam);
                 ctx.SaveChanges();
             }
@@ -63,6 +65,12 @@ namespace MindstormApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var deleteTeam = ctx.Teams.Find(id);
+            if (deleteTeam != null)
+            {
+                ctx.Remove(deleteTeam);
+                ctx.SaveChanges();
+            }
         }
     }
 }
