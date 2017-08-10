@@ -43,7 +43,7 @@ namespace MindstormApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(b=> b.AllowAnyOrigin().AllowAnyMethod());
+            app.UseCors(b=> b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
     }
