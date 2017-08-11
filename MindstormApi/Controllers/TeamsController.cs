@@ -54,7 +54,13 @@ namespace MindstormApi.Controllers
                 oldTeam.TeamName = value.TeamName;
                 oldTeam.TeamNumber = value.TeamNumber;
                 oldTeam.CoachFirstName = value.CoachFirstName;
-
+                oldTeam.CoachLastName = value.CoachLastName;
+                oldTeam.CoachEmail = value.CoachEmail;
+                oldTeam.AltCoachFirstName = value.AltCoachFirstName;
+                oldTeam.AltCoachlastName = value.AltCoachlastName;
+                oldTeam.AltCoachEmail = value.AltCoachEmail;
+                oldTeam.City = value.City;
+                oldTeam.State = value.State;
                 oldTeam.Updated = DateTime.Now;
                 ctx.Update(oldTeam);
                 ctx.SaveChanges();
