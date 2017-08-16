@@ -17,6 +17,7 @@ namespace MindstormApi.Controllers
             ctx = context;
         }
 
+        // Get team list
         // GET api/values
         [HttpGet]
         public IEnumerable<Team> Get()
@@ -26,14 +27,16 @@ namespace MindstormApi.Controllers
             return teams.ToList();
         }
 
+        // Get a team
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Team Get(int id)
         {
             var team = ctx.Teams.Find(id);
-            return "value";
+            return team;
         }
 
+        // Create team
         // POST api/values
         [HttpPost]
         public Team Post([FromBody]Team value)
@@ -44,9 +47,10 @@ namespace MindstormApi.Controllers
             return value;
         }
 
+        // Update team
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Team value)
+        public Team Put(int id, [FromBody]Team value)
         {
             var oldTeam = ctx.Teams.Find(id);
             if (oldTeam != null)
@@ -65,8 +69,10 @@ namespace MindstormApi.Controllers
                 ctx.Update(oldTeam);
                 ctx.SaveChanges();
             }
+            return oldTeam;
         }
 
+        // Delete team
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
