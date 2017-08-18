@@ -11,8 +11,10 @@ namespace MindstormApi.Models
         public MindstormDbContext(DbContextOptions<MindstormDbContext> options)
             : base(options)
         { }
-
-        public DbSet<Match> Matches { get; set; }
+        public DbSet<MatchDefinition> MatchDefinition { get; set; }
+        public DbSet<Match> Matches { get; set; }       
+        public DbSet<MatchDetails> MatchDetails { get; set; }        
+        public DbSet<Points> Points { get; set; }
         public DbSet<Team> Teams { get; set; }
     }
 

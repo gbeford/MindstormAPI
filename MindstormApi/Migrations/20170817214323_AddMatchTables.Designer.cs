@@ -11,9 +11,10 @@ using System;
 namespace MindstormApi.Migrations
 {
     [DbContext(typeof(MindstormDbContext))]
-    partial class MindstormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170817214323_AddMatchTables")]
+    partial class AddMatchTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,7 +68,7 @@ namespace MindstormApi.Migrations
 
                     b.Property<int>("SortOrder");
 
-                    b.Property<string>("Type");
+                    b.Property<bool>("Type");
 
                     b.HasKey("MatchDefinitionId");
 
