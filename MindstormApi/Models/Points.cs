@@ -11,6 +11,7 @@ namespace MindstormApi.Models
         public int MatchDefinitionId { get; set; }
         public string MatchDefinitionDesc { get; set; }
         public int Point { get; set; }
-       
+        public int year { get; set; }
+
     }
 }

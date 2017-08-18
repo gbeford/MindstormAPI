@@ -13,6 +13,6 @@ namespace MindstormApi.Models
         public string Answer { get; set; }
         public string TeamSignature { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime MatchYear { get; set; }
+        public int MatchYear { get; set; }
     }
 }

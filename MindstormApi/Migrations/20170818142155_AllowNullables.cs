@@ -22,12 +22,14 @@ namespace MindstormApi.Migrations
                 nullable: true,
                 oldClrType: typeof(int));
 
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.DropColumn(
+            name: "MatchYear",
+            table: "MatchDefinition");
+
+            migrationBuilder.AddColumn<int>(
                 name: "MatchYear",
                 table: "MatchDefinition",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(DateTime));
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

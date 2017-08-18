@@ -16,6 +16,6 @@ namespace MindstormApi.Models
         public Team Team { get; set; }
         public int Score { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime MatchYear { get; set; }
+        public int MatchYear { get; set; }
     }
 }
