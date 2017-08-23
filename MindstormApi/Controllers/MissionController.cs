@@ -4,28 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MindstormApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MindstormApi.Controllers
 {
     [Route("api/[controller]")]
-    public class MatchDefinitionController : Controller
+    public class MissionController : Controller
     {
         private readonly MindstormDbContext ctx;
 
 
-        public MatchDefinitionController(MindstormDbContext context)
+        public MissionController(MindstormDbContext context)
         {
             ctx = context;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<MatchDefinition> Get()
+        public IEnumerable<Mission> Get()
         {
-            var matchDefinition = ctx.MatchDefinition;
-            return matchDefinition.ToList();;
+
+            var missions = ctx.Missions.OrderBy(o => o.SortOrder).Include(i => i.MissionItems).OrderBy(o => o.SortOrder);
+
+            return missions;
           
         }
 

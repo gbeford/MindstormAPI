@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using MindstormApi.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MindstormApi
 {
@@ -31,7 +33,10 @@ namespace MindstormApi
         {
             // Add framework services.
             services.AddCors();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
             var connection = @"Server=(localdb)\mssqllocaldb;Database=MindstormDb;Trusted_Connection=True;";
             services.AddDbContext<MindstormDbContext>(options => options.UseSqlServer(connection));

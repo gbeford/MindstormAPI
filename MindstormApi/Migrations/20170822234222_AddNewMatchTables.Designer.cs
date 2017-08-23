@@ -11,9 +11,10 @@ using System;
 namespace MindstormApi.Migrations
 {
     [DbContext(typeof(MindstormDbContext))]
-    partial class MindstormDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170822234222_AddNewMatchTables")]
+    partial class AddNewMatchTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
